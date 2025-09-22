@@ -35,6 +35,8 @@ def main():
                     {
                         "name": offer["name"],
                         "url": offer["url"],
+                        "google_maps_url": offer["google_maps_url"],
+                        "nights_amount": offer["nights_amount"],
                         "start_date": offer["outbound_date"],
                         "end_date": offer["inbound_date"],
                         "distance_meters": int(offer["distance_m"]),
