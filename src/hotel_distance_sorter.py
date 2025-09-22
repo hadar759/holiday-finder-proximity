@@ -45,8 +45,10 @@ def main():
                     }
                 )
 
+        print(f"got {len(output_data)} offers")
+        print(f"Closest offer: {json.dumps(output_data[0], indent=2, ensure_ascii=False)}")
         # Write results to JSON file
-        with open("hotels_output.json", "w", encoding="utf-8") as f:
+        with open("output/hotels_output.json", "w", encoding="utf-8") as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
 
     except Exception as e:

@@ -89,7 +89,6 @@ def extract_hotel_info(offer: Dict[str, Any]) -> Optional[Dict[str, Any]]:
 
 def get_holiday_offers():
     offers = fetch_offers_data(f"{base_url}/?data={quote(json.dumps(data))}")
-    print("got offers")
     return [extract_hotel_info(offer) for offer in offers]
 
 

@@ -1,17 +1,25 @@
 base_url = "https://www.holidayfinder.co.il/api_no_auth/holiday_finder/offers"
 
-comparison_address = "Dorotheergasse 13"
-city = "Vienna"
-min_budget = 505
-max_budget = 665
-min_nights = 4
-max_nights = 5
+CITY_CENTERS = {
+    "Budapest": "St. Stephen's Basilica",
+    "Vienna": "Dorotheergasse 13",
+    "Prague": "Staroměstské nám.",
+    "Rome": "Trevi Fountain",
+}
+CITY_NUMBERS = {"Prague": 28, "Rome": 19}
+
+city = "Rome"
+min_budget = 0
+max_budget = 550
+min_nights = 5
+max_nights = 6
 data = {
     "locale": "he",
     "currency": "USD",
     "fromwhere": ["TLV"],
     "engine": {
         "market": 4,
+        "where": None if CITY_NUMBERS.get(city) is None else [CITY_NUMBERS[city]],
         "when": {
             "months": {
                 "periods": [
@@ -32,3 +40,5 @@ data = {
     "limit": 1000,
     "offset": 0,
 }
+
+comparison_address = CITY_CENTERS[city]
