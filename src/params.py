@@ -1,2 +1,34 @@
-comparison_address = "Dorotheergasse 13, Vienna, Austria"
-url = "https://www.holidayfinder.co.il/api_no_auth/holiday_finder/offers/?data=\{%22locale%22:%22he%22,%22currency%22:%22USD%22,%22fromwhere%22:\[%22TLV%22\],%22engine%22:\{%22market%22:4,%22where%22:\[21\],%22when%22:\{%22months%22:\{%22periods%22:\[\{%22start%22:%2201/10/2025%22,%22end%22:%2231/10/2025%22\},\{%22start%22:%2201/11/2025%22,%22end%22:%2230/11/2025%22\}\],%22min%22:4,%22max%22:5,%22nights%22:\[4,5\]\}\},%22who%22:\{%22adult%22:2,%22child%22:0,%22room%22:1,%22childAges%22:\[\]\},%22what%22:\[\],%22whereTxt%22:\[%22Vienna%22\],%22whatTxt%22:\[\],%22destinationGroups%22:\[\],%22budget%22:\{%22min%22:505,%22max%22:665\}\},%22filters%22:\{%22rating%22:\[\],%22stops%22:\[\],%22refundable%22:false,%22board%22:\[\],%22amenities%22:\[\],%22amenitiesTxt%22:\[\],%22luggage%22:\{%22canAddTrolley%22:true,%22canAddCib%22:false\},%22flex%22:false\},%22sort%22:\{%22best%22:-1\},%22limit%22:100,%22offset%22:0,%22searchUserProfile%22:0\}&muid=ea1683ef7701aab84e8d1564f67eb93c"
+base_url = "https://www.holidayfinder.co.il/api_no_auth/holiday_finder/offers"
+
+comparison_address = "Dorotheergasse 13"
+city = "Vienna"
+min_budget = 505
+max_budget = 665
+min_nights = 4
+max_nights = 5
+data = {
+    "locale": "he",
+    "currency": "USD",
+    "fromwhere": ["TLV"],
+    "engine": {
+        "market": 4,
+        "when": {
+            "months": {
+                "periods": [
+                    {"start": "01/10/2025", "end": "31/10/2025"},
+                    {"start": "01/11/2025", "end": "30/11/2025"},
+                ],
+                "min": min_nights,
+                "max": max_nights,
+                "nights": [min_nights, max_nights],
+            }
+        },
+        "who": {"adult": 2, "child": 0, "room": 1, "childAges": []},
+        "whereTxt": [city],
+        "budget": {"min": min_budget, "max": max_budget},
+        "flex": False,
+    },
+    "sort": {"best": -1},
+    "limit": 1000,
+    "offset": 0,
+}

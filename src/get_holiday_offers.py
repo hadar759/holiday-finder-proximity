@@ -1,20 +1,8 @@
 import json
+from urllib.parse import quote
 import urllib.request
 from typing import List, Dict, Optional, Any
-from params import url
-
-
-def cleanup_url(dirty_url: str) -> str:
-    """
-    Clean up URLs that have backslash-escaped JSON characters
-    Converts \\{ to %7B, \\[ to %5B, etc.
-    """
-    # Replace escaped JSON characters with their proper URL encoding
-    clean_url = dirty_url.replace("\\{", "%7B")
-    clean_url = clean_url.replace("\\}", "%7D")
-    clean_url = clean_url.replace("\\[", "%5B")
-    clean_url = clean_url.replace("\\]", "%5D")
-    return clean_url
+from params import base_url, data
 
 
 def fetch_offers_data(url: str) -> List[Dict[str, Any]]:
@@ -23,10 +11,7 @@ def fetch_offers_data(url: str) -> List[Dict[str, Any]]:
     Returns list of hotel offers
     """
     try:
-        # Clean up the URL first
-        clean_url = cleanup_url(url)
-
-        request = urllib.request.Request(clean_url)
+        request = urllib.request.Request(url)
         request.add_header(
             "User-Agent",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -74,7 +59,8 @@ def extract_hotel_info(offer: Dict[str, Any]) -> Optional[Dict[str, Any]]:
 
 
 def get_holiday_offers():
-    offers = fetch_offers_data(url)
+    offers = fetch_offers_data(f"{base_url}/?data={quote(json.dumps(data))}")
+    print("got offers")
     return [extract_hotel_info(offer) for offer in offers]
 
 
