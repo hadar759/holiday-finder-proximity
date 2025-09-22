@@ -1,0 +1,245 @@
+[
+  {
+    "name": "So Vienna",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033747c20o251025i291025st1:withTrolley:RO/step/0/hfOffer/4033747?adult=2&airports[]=TLV",
+    "start_date": "25/10/2025",
+    "end_date": "29/10/2025",
+    "distance_meters": 1016,
+    "price": 1310,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Mercure Wien City",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033818c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/4033818?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 1051,
+    "price": 1152,
+    "airline": "Elal"
+  },
+  {
+    "name": "Aparthotel Adagio Vienna City",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033975c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/4033975?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 1197,
+    "price": 1188,
+    "airline": "Elal"
+  },
+  {
+    "name": "Fleming'S Deluxe Hotel Wien City",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033890c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/4033890?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 1204,
+    "price": 1253,
+    "airline": "Elal"
+  },
+  {
+    "name": "Nh Wien City",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033894c20o311025i051125st1:withTrolley:RO/step/0/hfOffer/4033894?adult=2&airports[]=TLV",
+    "start_date": "31/10/2025",
+    "end_date": "05/11/2025",
+    "distance_meters": 1300,
+    "price": 1216,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Mercure Grand Hotel Biedermeier Wien",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033836c20o291025i031125st1:withTrolley:RO/step/0/hfOffer/4033836?adult=2&airports[]=TLV",
+    "start_date": "29/10/2025",
+    "end_date": "03/11/2025",
+    "distance_meters": 1496,
+    "price": 1260,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Hotel Haydn",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4331900c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/4331900?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 1515,
+    "price": 1266,
+    "airline": "Elal"
+  },
+  {
+    "name": "Hotel Imlauer Vienna",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h6579886c20o201025i241025st1:withTrolley:RO/step/0/hfOffer/6579886?adult=2&airports[]=TLV",
+    "start_date": "20/10/2025",
+    "end_date": "24/10/2025",
+    "distance_meters": 1539,
+    "price": 1322,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Hotel Schani Salon",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4331901c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/4331901?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 1558,
+    "price": 1172,
+    "airline": "Elal"
+  },
+  {
+    "name": "NH Wien Belvedere",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4305968c20o291025i031125st1:withTrolley:RO/step/0/hfOffer/4305968?adult=2&airports[]=TLV",
+    "start_date": "29/10/2025",
+    "end_date": "03/11/2025",
+    "distance_meters": 1605,
+    "price": 1236,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "ibis Styles Wien Messe Prater",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h10801054c20o211025i251025st1:withTrolley:RO/step/0/hfOffer/10801054?adult=2&airports[]=TLV",
+    "start_date": "21/10/2025",
+    "end_date": "25/10/2025",
+    "distance_meters": 1822,
+    "price": 1275,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Austria Classic Hotel Wien",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033852c20o251025i291025st1:withTrolley:BB/step/0/hfOffer/4033852?adult=2&airports[]=TLV",
+    "start_date": "25/10/2025",
+    "end_date": "29/10/2025",
+    "distance_meters": 1922,
+    "price": 1312,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Austria Trend Hotel Anatol",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033831c20o211025i251025st1:withTrolley:RO/step/0/hfOffer/4033831?adult=2&airports[]=TLV",
+    "start_date": "21/10/2025",
+    "end_date": "25/10/2025",
+    "distance_meters": 2178,
+    "price": 1254,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Ruby Marie Hotel Vienna",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h6612191c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/6612191?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 2334,
+    "price": 1159,
+    "airline": "Elal"
+  },
+  {
+    "name": "IntercityHotel Wien",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033742c20o161025i201025st1:withTrolley:RO/step/0/hfOffer/4033742?adult=2&airports[]=TLV",
+    "start_date": "16/10/2025",
+    "end_date": "20/10/2025",
+    "distance_meters": 2341,
+    "price": 1324,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Novotel Wien Hauptbahnhof",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h8768161c20o071125i111125st1:withTrolley:RO/step/0/hfOffer/8768161?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 2445,
+    "price": 1197,
+    "airline": "Elal"
+  },
+  {
+    "name": "roomz Vienna Prater",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h9491816c20o291025i031125st1:withTrolley:RO/step/0/hfOffer/9491816?adult=2&airports[]=TLV",
+    "start_date": "29/10/2025",
+    "end_date": "03/11/2025",
+    "distance_meters": 2500,
+    "price": 1305,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Oliver Apartments",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h9674922c20o181025i221025st1:withTrolley:RO/step/0/hfOffer/9674922?adult=2&airports[]=TLV",
+    "start_date": "18/10/2025",
+    "end_date": "22/10/2025",
+    "distance_meters": 2724,
+    "price": 1267,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Ibis Wien Messe",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h6974091c20o161025i201025st1:withTrolley:RO/step/0/hfOffer/6974091?adult=2&airports[]=TLV",
+    "start_date": "16/10/2025",
+    "end_date": "20/10/2025",
+    "distance_meters": 2731,
+    "price": 1292,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Hampton by Hilton Vienna Messe",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h13987717c20o071125i111125st1:withTrolley:BB/step/0/hfOffer/13987717?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "11/11/2025",
+    "distance_meters": 2800,
+    "price": 1123,
+    "airline": "Elal"
+  },
+  {
+    "name": "Hotel Schani Wien Hauptbahnhof",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h5739675c20o071125i121125st1:withTrolley:RO/step/0/hfOffer/5739675?adult=2&airports[]=TLV",
+    "start_date": "07/11/2025",
+    "end_date": "12/11/2025",
+    "distance_meters": 2885,
+    "price": 1264,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "MAXX by Steigenberger Vienna",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4477149c20o311025i051125st1:withTrolley:RO/step/0/hfOffer/4477149?adult=2&airports[]=TLV",
+    "start_date": "31/10/2025",
+    "end_date": "05/11/2025",
+    "distance_meters": 2917,
+    "price": 1168,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Hampton by Hilton Vienna City West",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h17014028c20o211025i251025st1:withTrolley:BB/step/0/hfOffer/17014028?adult=2&airports[]=TLV",
+    "start_date": "21/10/2025",
+    "end_date": "25/10/2025",
+    "distance_meters": 3334,
+    "price": 1203,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "Hilton Vienna Waterfront",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033725c20o201025i251025st1:withTrolley:RO/step/0/hfOffer/4033725?adult=2&airports[]=TLV",
+    "start_date": "20/10/2025",
+    "end_date": "25/10/2025",
+    "distance_meters": 3969,
+    "price": 1320,
+    "airline": "Tus Airways"
+  },
+  {
+    "name": "DoubleTree by Hilton Vienna Schonbrunn",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033807c20o311025i051125st1:withTrolley:RO/step/0/hfOffer/4033807?adult=2&airports[]=TLV",
+    "start_date": "31/10/2025",
+    "end_date": "05/11/2025",
+    "distance_meters": 4282,
+    "price": 1212,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Austria Trend Parkhotel Schoenbrunn",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h4033767c20o311025i051125st1:withTrolley:RO/step/0/hfOffer/4033767?adult=2&airports[]=TLV",
+    "start_date": "31/10/2025",
+    "end_date": "05/11/2025",
+    "distance_meters": 5445,
+    "price": 1259,
+    "airline": "Blue Bird Airways"
+  },
+  {
+    "name": "Spark by Hilton Vienna Donaustadt",
+    "url": "http://www.holidayfinder.co.il/holidayfinder/product/#/hfoffer---m4d21h17014025c20o171025i221025st1:withTrolley:RO/step/0/hfOffer/17014025?adult=2&airports[]=TLV",
+    "start_date": "17/10/2025",
+    "end_date": "22/10/2025",
+    "distance_meters": 6252,
+    "price": 1330,
+    "airline": "Wizzair"
+  }
+]
