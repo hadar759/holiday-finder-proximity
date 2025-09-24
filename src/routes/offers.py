@@ -63,10 +63,9 @@ async def get_offers(
                 market=market,
                 where=where,
                 when={
-                    "months": {
-                        "periods": [],
-                        "from": start_date,
-                        "to": end_date,
+                    "flexible": {
+                        "start": start_date,
+                        "end": end_date,
                         "min": min_nights,
                         "max": max_nights,
                         "nights": [i for i in range(min_nights, max_nights + 1)],
