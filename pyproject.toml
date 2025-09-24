@@ -5,33 +5,18 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "holiday-finder"
 version = "0.1.0"
-description = "A tool to find and sort hotels by distance from a given address"
+description = "Find and sort holiday finder offers by proximity to a given address"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
-]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
+    {name = "Hadar Dagan", email = "hadarda11@gmail.com"}
 ]
 dependencies = [
     "requests>=2.25.0",
-    "geocoder>=1.38.1"
+    "geocoder>=1.38.1",
+    "pydantic>=2.0.0"
 ]
 
 [project.scripts]
 hotel-distance-sorter = "hotel_distance_sorter:main"
-
-[project.urls]
-"Homepage" = "https://github.com/yourusername/holiday-finder"
-"Bug Reports" = "https://github.com/yourusername/holiday-finder/issues"
-"Source" = "https://github.com/yourusername/holiday-finder"

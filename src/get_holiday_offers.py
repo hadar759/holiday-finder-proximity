@@ -1,15 +1,17 @@
 import json
 from urllib.parse import quote
 import urllib.request
-from typing import List, Dict, Optional, Any
+from typing import List, Optional
 from datetime import datetime
 from params import base_url, data
+from models.holiday_finder_api import ApiResponse, Offer
+from models.offer import ProcessedOffer
 
 
-def fetch_offers_data(url: str) -> List[Dict[str, Any]]:
+def fetch_offers_data(url: str) -> List[Offer]:
     """
     Fetch hotel data from the given URL
-    Returns list of hotel offers
+    Returns list of typed hotel offers
     """
     try:
         request = urllib.request.Request(url)
@@ -19,15 +21,11 @@ def fetch_offers_data(url: str) -> List[Dict[str, Any]]:
         )
 
         with urllib.request.urlopen(request) as response:
-            data = json.loads(response.read().decode())
+            raw_data = json.loads(response.read().decode())
 
-        # Extract offers from the response structure
-        if "data" in data and "offers" in data["data"]:
-            return data["data"]["offers"]
-        elif isinstance(data, list):
-            return data
-        else:
-            raise ValueError("Unexpected data structure")
+        # Parse and validate the response using Pydantic
+        api_response = ApiResponse.model_validate(raw_data)
+        return api_response.data.offers
 
     except Exception as e:
         raise Exception(f"Failed to fetch data from URL '{url}': {e}")
@@ -53,41 +51,38 @@ def generate_google_maps_url(latitude: float, longitude: float) -> str:
     return f"https://www.google.com/maps/place/{latitude},{longitude}"
 
 
-def extract_hotel_info(offer: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+def extract_hotel_info(offer: Offer) -> Optional[ProcessedOffer]:
     """
     Extract relevant hotel information from an offer
-    Returns dict with name, coordinates, dates, URL, price, airline, nights_amount, and google_maps_url
+    Returns ProcessedOffer with name, coordinates, dates, URL, price, airline, nights_amount, and google_maps_url
     """
-    hotel = offer.get("hotel", {})
-    offer_data = offer.get("offer", {})
-    flight_data = offer.get("flight", {})
+    try:
+        latitude = offer.hotel.coordinates.latitude
+        longitude = offer.hotel.coordinates.longitude
+        outbound_date = offer.offer.outboundDate
+        inbound_date = offer.offer.inboundDate
 
-    # Extract coordinates
-    coords = hotel.get("coordinates", {})
-    if not coords or "latitude" not in coords or "longitude" not in coords:
+        return ProcessedOffer(
+            hotel_name=offer.hotel.name,
+            image_url=offer.hotel.photos[0],
+            coordinates=offer.hotel.coordinates,
+            outbound_date=outbound_date,
+            inbound_date=inbound_date,
+            nights_amount=calculate_nights(outbound_date, inbound_date),
+            url=offer.offer.packageDeeplinkUrl,
+            price=offer.offer.price,
+            airline=offer.flight.company_name,
+            google_maps_url=generate_google_maps_url(latitude, longitude),
+        )
+    except Exception:
         return None
 
-    hotel_name = hotel.get("name", "Unknown Hotel")
-    latitude = float(coords["latitude"])
-    longitude = float(coords["longitude"])
-    outbound_date = offer_data.get("outboundDate", "")
-    inbound_date = offer_data.get("inboundDate", "")
 
-    return {
-        "name": hotel_name,
-        "latitude": latitude,
-        "longitude": longitude,
-        "outbound_date": outbound_date,
-        "inbound_date": inbound_date,
-        "nights_amount": calculate_nights(outbound_date, inbound_date),
-        "url": offer_data.get("packageDeeplinkUrl", ""),
-        "price": offer_data.get("price", 0),
-        "airline": flight_data.get("company_name", "Unknown Airline"),
-        "google_maps_url": generate_google_maps_url(latitude, longitude),
-    }
-
-
-def get_holiday_offers():
+def get_holiday_offers() -> List[Optional[ProcessedOffer]]:
+    """
+    Fetch and process holiday offers
+    Returns list of processed offers (some may be None if processing failed)
+    """
     offers = fetch_offers_data(f"{base_url}/?data={quote(json.dumps(data))}")
     return [extract_hotel_info(offer) for offer in offers]
 
