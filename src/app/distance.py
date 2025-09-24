@@ -1,6 +1,7 @@
 from math import radians, cos, sin, asin, sqrt
-from typing import Tuple
 import geocoder
+
+from src.models.common import Coordinates
 
 
 def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -23,7 +24,7 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     return c * r
 
 
-def geocode_address(address: str) -> Tuple[float, float]:
+def geocode_address(address: str) -> Coordinates:
     """
     Convert an address to latitude/longitude using geocoder
     Returns (latitude, longitude)
@@ -35,7 +36,7 @@ def geocode_address(address: str) -> Tuple[float, float]:
         if not g.ok:
             raise ValueError(f"Address not found: {address}")
 
-        return float(g.lat), float(g.lng)
+        return Coordinates(latitude=float(g.lat), longitude=float(g.lng))
 
     except Exception as e:
         raise Exception(f"Failed to geocode address '{address}': {e}")

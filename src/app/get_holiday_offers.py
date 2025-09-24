@@ -3,22 +3,32 @@ from urllib.parse import quote
 import urllib.request
 from typing import List, Optional
 from datetime import datetime
-from params import base_url, data
-from models.holiday_finder_api import ApiResponse, Offer
-from models.offer import ProcessedOffer
+from src.models.holiday_finder_api import ApiResponse, Offer
+from src.models.offer import OfferOptions, ParsedOffer
+
+base_url = "https://www.holidayfinder.co.il/api_no_auth/holiday_finder/offers"
+CITY_NUMBERS = {"Prague": 28, "Rome": 19}
 
 
-def fetch_offers_data(url: str) -> List[Offer]:
+def fetch_offers_data(offer_options: OfferOptions) -> List[Offer]:
     """
     Fetch hotel data from the given URL
     Returns list of typed hotel offers
     """
     try:
+        data = {
+            **offer_options.model_dump(),
+            "sort": {"best": -1},
+            "limit": 1000,
+            "offset": 0,
+        }
+        if data["engine"]["where"] is None and data["engine"]["whereTxt"] is not None:
+            maybe_city_number = CITY_NUMBERS.get(data["engine"]["whereTxt"][0])
+            if maybe_city_number is not None:
+                data["engine"]["where"] = [maybe_city_number]
+
+        url = f"{base_url}/?data={quote(json.dumps(data))}"
         request = urllib.request.Request(url)
-        request.add_header(
-            "User-Agent",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        )
 
         with urllib.request.urlopen(request) as response:
             raw_data = json.loads(response.read().decode())
@@ -51,7 +61,7 @@ def generate_google_maps_url(latitude: float, longitude: float) -> str:
     return f"https://www.google.com/maps/place/{latitude},{longitude}"
 
 
-def extract_hotel_info(offer: Offer) -> Optional[ProcessedOffer]:
+def parse_offer(offer: Offer) -> Optional[ParsedOffer]:
     """
     Extract relevant hotel information from an offer
     Returns ProcessedOffer with name, coordinates, dates, URL, price, airline, nights_amount, and google_maps_url
@@ -62,7 +72,7 @@ def extract_hotel_info(offer: Offer) -> Optional[ProcessedOffer]:
         outbound_date = offer.offer.outboundDate
         inbound_date = offer.offer.inboundDate
 
-        return ProcessedOffer(
+        return ParsedOffer(
             hotel_name=offer.hotel.name,
             image_url=offer.hotel.photos[0],
             coordinates=offer.hotel.coordinates,
@@ -78,14 +88,10 @@ def extract_hotel_info(offer: Offer) -> Optional[ProcessedOffer]:
         return None
 
 
-def get_holiday_offers() -> List[Optional[ProcessedOffer]]:
+def get_holiday_offers(offer_options: OfferOptions) -> List[Optional[ParsedOffer]]:
     """
     Fetch and process holiday offers
     Returns list of processed offers (some may be None if processing failed)
     """
-    offers = fetch_offers_data(f"{base_url}/?data={quote(json.dumps(data))}")
-    return [extract_hotel_info(offer) for offer in offers]
-
-
-if __name__ == "__main__":
-    get_holiday_offers()
+    offers = fetch_offers_data(offer_options)
+    return [parse_offer(offer) for offer in offers]

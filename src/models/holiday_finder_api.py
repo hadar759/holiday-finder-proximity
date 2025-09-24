@@ -1,7 +1,7 @@
 from typing import Any
 from pydantic import BaseModel, Field
 
-from models.common import Coordinates
+from src.models.common import Coordinates
 
 
 class DestinationData(BaseModel):
