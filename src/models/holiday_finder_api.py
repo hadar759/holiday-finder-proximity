@@ -68,7 +68,8 @@ class OfferData(BaseModel):
     leadTime: str
     currency: str
     debug_info: dict[str, Any]
-    stickers: Stickers
+    # Not important
+    # stickers: Stickers
     capacity_from_filter: dict[str, Any]
     created_at: str
 
