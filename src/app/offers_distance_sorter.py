@@ -9,20 +9,20 @@ from src.models.offer import (
     OfferOptions,
     OfferEngineOptions,
     OfferWithDistance,
-    ParsedOffer,
+    OfferWithCalculatedFields,
 )
 
 
 def add_distance_to_offers(
-    offers: list[ParsedOffer], comp_coordinates: Coordinates
+    offers: list[OfferWithCalculatedFields], comp_coordinates: Coordinates
 ) -> list[OfferWithDistance]:
     offers_with_distance = []
     for offer in offers:
         distance = haversine_distance(
             comp_coordinates.latitude,
             comp_coordinates.longitude,
-            offer.coordinates.latitude,
-            offer.coordinates.longitude,
+            offer.hotel.coordinates.latitude,
+            offer.hotel.coordinates.longitude,
         )
         offers_with_distance.append(
             OfferWithDistance(

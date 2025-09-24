@@ -86,16 +86,17 @@ async def get_offers(
 
         return [
             {
-                "name": offer.hotel_name,
-                "url": offer.url,
-                "image_url": offer.image_url,
+                "name": offer.hotel.name,
+                "url": offer.offer.packageDeeplinkUrl,
+                "rating": offer.hotel.rating,
+                "image_url": offer.hotel.photos[0],
                 "google_maps_url": offer.google_maps_url,
                 "nights_amount": offer.nights_amount,
-                "start_date": offer.outbound_date,
-                "end_date": offer.inbound_date,
+                "start_date": offer.offer.outboundDate,
+                "end_date": offer.offer.inboundDate,
                 "distance_meters": int(offer.distance_m),
-                "price": offer.price,
-                "airline": offer.airline,
+                "price": offer.offer.price,
+                "airline": offer.flight.company_name,
             }
             for offer in offers_with_distance
         ]

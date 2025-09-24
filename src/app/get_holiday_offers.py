@@ -4,7 +4,7 @@ import urllib.request
 from typing import List, Optional
 from datetime import datetime
 from src.models.holiday_finder_api import ApiResponse, Offer
-from src.models.offer import OfferOptions, ParsedOffer
+from src.models.offer import OfferOptions, OfferWithCalculatedFields
 
 base_url = "https://www.holidayfinder.co.il/api_no_auth/holiday_finder/offers"
 CITY_NUMBERS = {"Prague": 28, "Rome": 19}
@@ -61,7 +61,7 @@ def generate_google_maps_url(latitude: float, longitude: float) -> str:
     return f"https://www.google.com/maps/place/{latitude},{longitude}"
 
 
-def parse_offer(offer: Offer) -> Optional[ParsedOffer]:
+def add_calculated_fields(offer: Offer) -> Optional[OfferWithCalculatedFields]:
     """
     Extract relevant hotel information from an offer
     Returns ProcessedOffer with name, coordinates, dates, URL, price, airline, nights_amount, and google_maps_url
@@ -72,26 +72,21 @@ def parse_offer(offer: Offer) -> Optional[ParsedOffer]:
         outbound_date = offer.offer.outboundDate
         inbound_date = offer.offer.inboundDate
 
-        return ParsedOffer(
-            hotel_name=offer.hotel.name,
-            image_url=offer.hotel.photos[0],
-            coordinates=offer.hotel.coordinates,
-            outbound_date=outbound_date,
-            inbound_date=inbound_date,
+        return OfferWithCalculatedFields(
+            **offer.model_dump(),
             nights_amount=calculate_nights(outbound_date, inbound_date),
-            url=offer.offer.packageDeeplinkUrl,
-            price=offer.offer.price,
-            airline=offer.flight.company_name,
             google_maps_url=generate_google_maps_url(latitude, longitude),
         )
     except Exception:
         return None
 
 
-def get_holiday_offers(offer_options: OfferOptions) -> List[Optional[ParsedOffer]]:
+def get_holiday_offers(
+    offer_options: OfferOptions,
+) -> List[Optional[OfferWithCalculatedFields]]:
     """
     Fetch and process holiday offers
     Returns list of processed offers (some may be None if processing failed)
     """
     offers = fetch_offers_data(offer_options)
-    return [parse_offer(offer) for offer in offers]
+    return [add_calculated_fields(offer) for offer in offers]

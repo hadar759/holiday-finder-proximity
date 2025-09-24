@@ -1,6 +1,5 @@
+from src.models.holiday_finder_api import Offer
 from pydantic import BaseModel, Field
-
-from src.models.common import Coordinates
 
 
 class Budget(BaseModel):
@@ -32,18 +31,10 @@ class OfferOptions(BaseModel):
     engine: OfferEngineOptions
 
 
-class ParsedOffer(BaseModel):
-    hotel_name: str
-    image_url: str | None
-    coordinates: Coordinates
-    outbound_date: str
-    inbound_date: str
+class OfferWithCalculatedFields(Offer):
     nights_amount: int
-    url: str
-    price: int
-    airline: str
     google_maps_url: str
 
 
-class OfferWithDistance(ParsedOffer):
+class OfferWithDistance(OfferWithCalculatedFields):
     distance_m: float
