@@ -73,7 +73,6 @@ async def get_offers(
             ),
         )
 
-        print(f"offer_options: {offer_options}")
         offers = get_holiday_offers(offer_options)
         valid_offers = [offer for offer in offers if offer is not None]
 
@@ -89,6 +88,7 @@ async def get_offers(
             {
                 "name": offer.hotel_name,
                 "url": offer.url,
+                "image_url": offer.image_url,
                 "google_maps_url": offer.google_maps_url,
                 "nights_amount": offer.nights_amount,
                 "start_date": offer.outbound_date,
