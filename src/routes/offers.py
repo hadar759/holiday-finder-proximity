@@ -45,10 +45,16 @@ async def get_offers(
     comparison_address = (
         comparison_address
         if comparison_address is not None
-        else CITY_CENTERS[whereTxt[0]]
+        else CITY_CENTERS.get(whereTxt[0])
     )
-    comparison_coordinates = geocode_address(comparison_address)
+    if comparison_address is None:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Comparison address is required unless a supported city (one of: {', '.join(CITY_CENTERS.keys())}) is provided",
+        )
+
     try:
+        comparison_coordinates = geocode_address(comparison_address)
         offer_options = OfferOptions(
             locale=locale,
             currency=currency,
