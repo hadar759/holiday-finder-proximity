@@ -1,7 +1,6 @@
 import sys
 import json
 from .get_holiday_offers import get_holiday_offers
-from .params import CITY_CENTERS
 from .distance import haversine_distance, geocode_address
 from src.models.common import Coordinates
 from src.models.offer import (
@@ -63,7 +62,7 @@ def main():
         limit=1000,
         offset=0,
     )
-    comparison_address = CITY_CENTERS[city]
+    comparison_address = city
 
     try:
         comp_coordinates = geocode_address(comparison_address)

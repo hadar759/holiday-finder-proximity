@@ -1,5 +1,6 @@
 from math import radians, cos, sin, asin, sqrt
-import geocoder
+from geopy.geocoders import Nominatim
+from geopy.location import Location
 
 from src.models.common import Coordinates
 
@@ -24,19 +25,25 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     return c * r
 
 
-def geocode_address(address: str) -> Coordinates:
+geolocator = Nominatim(user_agent="holiday-finder/1.0 (geocoding application)")
+
+
+def geocode_address(address: str, is_city: bool = False) -> Coordinates:
     """
     Convert an address to latitude/longitude using geocoder
     Returns (latitude, longitude)
     """
     try:
-        headers = {"User-Agent": "holiday-finder/1.0 (geocoding application)"}
-        g = geocoder.osm(address, headers=headers)
+        location: Location | None = geolocator.geocode(
+            {"city": address} if is_city else address
+        )
 
-        if not g.ok:
+        if not location:
             raise ValueError(f"Address not found: {address}")
 
-        return Coordinates(latitude=float(g.lat), longitude=float(g.lng))
+        return Coordinates(
+            latitude=float(location.latitude), longitude=float(location.longitude)
+        )
 
     except Exception as e:
         raise Exception(f"Failed to geocode address '{address}': {e}")
