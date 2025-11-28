@@ -89,7 +89,7 @@ class HotelData(BaseModel):
     rating: int
     photos: list[str]
     coordinates: Coordinates
-    facilities: dict[str, Facility] | None = Field(default=None)
+    facilities: dict[str, Facility] | list[Facility] | None = Field(default=None)
     packageHighlightOnCard: str | None = Field(default=None)
     packageTitleOnCard: str | None = Field(default=None)
     packageTitleOnDetails: str | None = Field(default=None)
