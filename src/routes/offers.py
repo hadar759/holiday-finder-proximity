@@ -71,7 +71,9 @@ async def get_offers(
         fallback_to_city_center = True
 
     try:
-        comparison_coordinates = geocode_address(comparison_address, is_city=fallback_to_city_center)
+        comparison_coordinates = geocode_address(
+            comparison_address, is_city=fallback_to_city_center
+        )
     except Exception:
         print(traceback.format_exc())
         raise HTTPException(

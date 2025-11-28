@@ -89,4 +89,19 @@ def get_holiday_offers(
     Returns list of processed offers (some may be None if processing failed)
     """
     offers = fetch_offers_data(offer_options)
-    return [add_calculated_fields(offer) for offer in offers]
+
+    destination_names = (
+        [where_txt.lower() for where_txt in offer_options.engine.whereTxt]
+        if offer_options.engine.whereTxt is not None
+        else []
+    )
+    destination_ids = (
+        offer_options.engine.where if offer_options.engine.where is not None else []
+    )
+    city_offers = [
+        offer
+        for offer in offers
+        if offer.destinationData.name_en.lower() in destination_names
+        or offer.destinationData.destinationId in destination_ids
+    ]
+    return [add_calculated_fields(offer) for offer in city_offers]
